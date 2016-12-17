@@ -1,8 +1,8 @@
 
 -- #seed the customers table
-INSERT INTO customers (first_name, last_name, address_line_1,address_line_2,postcode,funds) VALUES ('Daniel','Smith','93 Altyre Avenue', 'Glenrothes','KY7 4PY', 100);
-INSERT INTO customers (first_name, last_name, address_line_1,address_line_2,postcode,funds) VALUES ('Stephen','Ritchie','113 Martin Crescent', 'Ballingry','KY5 8PU', 100);
-INSERT INTO customers (first_name, last_name, address_line_1,address_line_2,postcode,funds) VALUES ('Maureen','Guppy','6 Strathye Place', 'Glenrothes','KY7 6XQ', 100);
+INSERT INTO customers (name, address_line_1,address_line_2,postcode,funds) VALUES ('Daniel Smith','93 Altyre Avenue', 'Glenrothes','KY7 4PY', 100);
+INSERT INTO customers (name, address_line_1,address_line_2,postcode,funds) VALUES ('Stephen Ritchie','113 Martin Crescent', 'Ballingry','KY5 8PU', 100);
+INSERT INTO customers (name, address_line_1,address_line_2,postcode,funds) VALUES ('Maureen Guppy','6 Strathye Place', 'Glenrothes','KY7 6XQ', 100);
 
 -- seed the products table
 INSERT INTO products (species,latin_name, image, price, quantity) VALUES ('Full Red Guppy', 'poecilia reticulata','./images/red_guppies.JPG',1.50,10);

@@ -5,8 +5,7 @@ DROP TABLE IF EXISTS products;
 
 CREATE TABLE customers (
   id SERIAL4 primary key,
-  first_name VARCHAR(255),
-  last_name VARCHAR(255),
+  name VARCHAR(255),
   address_line_1 VARCHAR(255),
   address_line_2 VARCHAR(255),
   postcode VARCHAR(255),
