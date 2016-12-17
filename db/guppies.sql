@@ -14,7 +14,7 @@ CREATE TABLE customers (
 
 CREATE TABLE products (
   id SERIAL4 primary key,
-  species VARCHAR(255),
+  specie VARCHAR(255),
   latin_name VARCHAR(255),
   image VARCHAR(255),
   price REAL,

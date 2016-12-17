@@ -33,7 +33,7 @@ class CustomerSpec < MiniTest::Test
     customer1 = Customer.new({'name' => 'Sandy Guppy','address_line_1' => '13 Carleton Avenue','address_line_2' => 'Glenrothes','postcode' => 'KY7 5AW','funds' => 100})
     customer1.save()
     Customer.delete_duplicates()
-    actual = customer1.get_funds('Sandy Guppy')
+    actual = customer1.funds
     expected = 100
     assert_equal(expected, actual)
   end

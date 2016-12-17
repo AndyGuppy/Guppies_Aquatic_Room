@@ -1,0 +1,70 @@
+require_relative("../db/sql_runner")
+require('pry-byebug')
+
+class Product
+
+  attr_reader :id
+  attr_accessor :specie, :addres_line_1, :address_line_2, :postcode, :funds
+
+  def initialize ( options )
+    @id = nil || options['id'].to_i
+    @specie = options['specie']
+    @latin_name = options['latin_name']
+    @image = options['image']
+    @price = options['price']
+    @quantity = options['quantity']
+  end
+
+  def save()
+    sql = "
+    INSERT INTO products 
+    (specie, latin_name, image, price, quantity ) 
+    VALUES 
+    ('#{ @specie }','#{ @latin_name }','#{ @image }','#{ @price }',#{ @quantity }) 
+    RETURNING id
+    "
+    product = SqlRunner.run( sql ).first
+    @id = product['id'].to_i
+  end
+
+  def self.get_product_id(specie)
+    sql = "
+    SELECT id 
+    FROM products 
+    WHERE specie = '#{specie}' ;
+    "
+    result = SqlRunner.run( sql )
+    product = Product.new(result[0])
+    return product.id
+  end
+
+  def self.all()
+    sql = "SELECT * FROM products"
+    return Product.get_many(sql)
+  end
+
+
+  def self.find( id )
+   sql = "SELECT * FROM products WHERE id=#{id}"
+   return Product.get_many(sql)
+  end
+
+  def self.delete_all
+   sql = "DELETE FROM products"
+   SqlRunner.run( sql )
+  end
+
+  def get_price()
+    sql = "  SELECT price FROM products WHERE id = '#{@id}';  "
+    return SqlRunner.run( sql )[0]['price']
+  end
+
+  #Refactor of the SqlRunner and return
+  def self.get_many(sql)
+    products = SqlRunner.run(sql)
+    products_objects = products.map { |product| 
+    Product.new(product)}
+    return products_objects
+  end
+
+end
