@@ -48,8 +48,16 @@ class Customer
     WHERE name = '#{name}' ;
     "
     result = SqlRunner.run( sql )
+    if result.count == 1 
     customer = Customer.new(result[0])
     return customer.id
+  else
+    if result.count == 0
+      return "Customer Not Found"
+    else
+      return "More than once customer with that name"
+    end
+  end
   end
 
   def self.all()

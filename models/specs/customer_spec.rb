@@ -21,10 +21,10 @@ class CustomerSpec < MiniTest::Test
   end
 
   def test_can_get_customer_id_from_name
-    customer1 = Customer.new({'name' => 'Sandy Guppy','address_line_1' => '13 Carleton Avenue','address_line_2' => 'Glenrothes','postcode' => 'KY7 5AW','funds' => 100})
+    customer1 = Customer.new({'name' => 'Clive Guppy','address_line_1' => '13 Carleton Avenue','address_line_2' => 'Glenrothes','postcode' => 'KY7 5AW','funds' => 100})
     customer1.save()
     Customer.delete_duplicates()
-    actual = Customer.get_customer_id('Sandy Guppy')
+    actual = Customer.get_customer_id('Clive Guppy')
     expected = customer1.id
     assert_equal(expected, actual)
   end
@@ -41,11 +41,13 @@ class CustomerSpec < MiniTest::Test
   def test_can_delete_duplicate_customer
     customer1 = Customer.new({'name' => 'Sandy Guppy','address_line_1' => '13 Carleton Avenue','address_line_2' => 'Glenrothes','postcode' => 'KY7 5AW','funds' => 100})
     customer1.save()
-    customer2 = Customer.new({'name' => 'Sandy Guppy','address_line_1' => '13 Carleton Avenue','address_line_2' => 'Glenrothes','postcode' => 'KY7 5AW','funds' => 100})
+    customer2 = Customer.new({'name' => 'Sandy Guppy','address_line_1' => '13 Carleton Avenue','address_line_2' => 'Glenrothes','postcode' => 'KY6 5AP','funds' => 100})
     customer2.save()
+    customer3 = Customer.new({'name' => 'Sandy Guppy','address_line_1' => '13 Carleton Avenue','address_line_2' => 'Glenrothes','postcode' => 'KY7 5AW','funds' => 100})
+    customer3.save()
     Customer.delete_duplicates()
     actual = Customer.all_instances('Sandy Guppy').count
-    expected = 1
+    expected = 2
     assert_equal(expected, actual)
   end
 

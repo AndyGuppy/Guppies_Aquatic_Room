@@ -9,6 +9,6 @@ INSERT INTO products (specie,latin_name, image, price, quantity) VALUES ('Full R
 INSERT INTO products (specie,latin_name, image, price, quantity) VALUES ('Red Robin Gourami', 'Colisa chuna','./images/red_robin Gourami.jpg',2.50,5);
 
 -- seed the sales table
-INSERT INTO sales (customer_id,product_id, purchase_type, purchase_time, delivery_type) VALUES (1, 2,'online',timeofday(),'delivery');
-INSERT INTO sales (customer_id,product_id, purchase_type, purchase_time, delivery_type) VALUES (2, 1,'in-store',timeofday(),'collection');
-INSERT INTO sales (customer_id,product_id, purchase_type, purchase_time, delivery_type) VALUES (1, 1,'auction',timeofday(),'delivery');
+INSERT INTO receipts (customer_id,product_id, purchase_type, purchase_time, delivery_type) VALUES (1, 2,'online',timeofday(),'delivery');
+INSERT INTO receipts (customer_id,product_id, purchase_type, purchase_time, delivery_type) VALUES (2, 1,'in-store',timeofday(),'collection');
+INSERT INTO receipts (customer_id,product_id, purchase_type, purchase_time, delivery_type) VALUES (1, 1,'auction',timeofday(),'delivery');

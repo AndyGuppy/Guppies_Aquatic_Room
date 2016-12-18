@@ -1,5 +1,5 @@
 
-DROP TABLE IF EXISTS sales;
+DROP TABLE IF EXISTS receipts;
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS products;
 
@@ -22,7 +22,7 @@ CREATE TABLE products (
 );
 
 
-CREATE TABLE sales (
+CREATE TABLE receipts (
   id SERIAL4 primary key,
   customer_id INT4 references customers(id) ON DELETE CASCADE,
   product_id INT4 references products(id) ON DELETE CASCADE,
